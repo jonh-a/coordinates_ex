@@ -7,11 +7,13 @@ defmodule Utils.Common do
           _ -> nil
         end
 
-      {:ok, %HTTPoison.Response{status_code: 404}} ->
-        nil
-
-      {:error, %HTTPoison.Error{}} ->
+      _ ->
         nil
     end
+  end
+
+  def parse_include_param(include \\ "") do
+    String.downcase(include)
+    |> String.split(",")
   end
 end

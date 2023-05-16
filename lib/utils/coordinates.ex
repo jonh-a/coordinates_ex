@@ -63,7 +63,7 @@ defmodule Utils.Coordinates do
   end
 
   @doc """
-  Generates random coordinates inside a given country's borders.
+  Generates random coordinates inside a given country's borders as [lat, lon].
 
   ## Examples
       iex > Utils.get_random_coordinates("brazil")
