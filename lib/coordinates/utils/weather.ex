@@ -1,9 +1,12 @@
-defmodule Utils.Weather do
+defmodule Coordinates.Utils.Weather do
+  @doc """
+  Fetch weather data from Openweathermap and parse it.
+  """
   def get_weather_for_coordinates(coordinates \\ [0, 0]) do
     [lat, lon] = coordinates
     key = System.get_env("OPENWEATHERMAP_API_KEY")
 
-    Utils.Common.make_get_request(
+    Coordinates.Utils.Common.make_get_request(
       "http://api.openweathermap.org/data/2.5/weather?lat=#{lat}&lon=#{lon}&appid=#{key}&units=imperial",
       [],
       %{}
@@ -25,7 +28,8 @@ defmodule Utils.Weather do
       visibility: Map.get(w, "visibility", 0),
       sunrise: Map.get(sys, "sunrise", 0),
       sunset: Map.get(sys, "sunset", 0),
-      description: Map.get(overview, "description", "")
+      description: Map.get(overview, "description", ""),
+      type: "weather"
     }
   end
 end

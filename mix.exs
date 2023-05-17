@@ -43,7 +43,8 @@ defmodule Coordinates.MixProject do
       {:httpoison, "~> 2.0"},
       {:poison, "~> 5.0"},
       {:topo, "~> 0.5.0"},
-      {:dotenv, "~> 3.0.0"}
+      {:dotenv, "~> 3.0.0"},
+      {:pantry_ex, git: "https://github.com/jonh-a/pantry_ex", override: true}
     ]
   end
 

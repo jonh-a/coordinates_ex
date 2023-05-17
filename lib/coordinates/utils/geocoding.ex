@@ -1,8 +1,11 @@
-defmodule Utils.Geocoding do
+defmodule Coordinates.Utils.Geocoding do
+  @doc """
+  Fetch geocoding data from Openstreetmap for a given set of coordinates and parse it.
+  """
   def get_geocoding_data_for_coordinates(coordinates \\ [0, 0]) do
     [lat, lon] = coordinates
 
-    Utils.Common.make_get_request(
+    Coordinates.Utils.Common.make_get_request(
       "https://nominatim.openstreetmap.org/reverse?format=json&lat=#{lat}&lon=#{lon}&addressdetails=1",
       [],
       %{}
@@ -23,7 +26,8 @@ defmodule Utils.Geocoding do
       bounding_box: Map.get(g, "boundingbox", [0, 0, 0, 0]),
       display_name: Map.get(g, "display_name", ""),
       lat: Map.get(g, "lat", ""),
-      lon: Map.get(g, "lon", "")
+      lon: Map.get(g, "lon", ""),
+      type: "geocoding"
     }
   end
 end
