@@ -1,7 +1,7 @@
 # ./Dockerfile
 
 # Extend from the official Elixir image
-FROM elixir:1.14.4-alpine
+FROM elixir:1.14.4
 
 # Install required libraries on Alpine
 # note: build-base required to run mix “make” for
@@ -9,10 +9,8 @@ FROM elixir:1.14.4-alpine
 
 WORKDIR /app
 
-RUN apk update && apk upgrade && \
-  apk add nodejs npm && \
-  apk add build-base && \
-  rm -rf /var/cache/apk/*
+RUN apt update && \
+  apt install nodejs npm -y
 
 # Set environment to production
 ENV MIX_ENV prod
