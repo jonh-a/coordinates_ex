@@ -25,6 +25,14 @@ defmodule CoordinatesWeb.RandomLocationController do
         data
       end
 
+    data =
+      if Enum.member?(include, "geocoding") == true do
+        geocoding = %{geocoding: Utils.Geocoding.get_geocoding_data_for_coordinates(coords)}
+        Map.merge(data, geocoding)
+      else
+        data
+      end
+
     json(conn, data)
   end
 end

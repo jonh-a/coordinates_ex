@@ -1,14 +1,14 @@
 defmodule Utils.Common do
-  def make_get_request(url, headers \\ []) do
+  def make_get_request(url, headers \\ [], default \\ nil) do
     case HTTPoison.get(url, headers) do
       {:ok, %HTTPoison.Response{status_code: 200, body: body}} ->
         case Poison.decode(body) do
           {:ok, json} -> json
-          _ -> nil
+          _ -> default
         end
 
       _ ->
-        nil
+        default
     end
   end
 
