@@ -9,6 +9,7 @@ defmodule CoordinatesWeb.Router do
     pipe_through :api
     get("/status", StatusController, :status)
     get("/random", RandomLocationController, :random_location)
+    get("/coordinates", GivenLocationController, :given_location)
   end
 
   # Enable Swoosh mailbox preview in development

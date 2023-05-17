@@ -16,4 +16,12 @@ defmodule Utils.Common do
     String.downcase(include)
     |> String.split(",")
   end
+
+  def validate_coordinate(coord) do
+    try do
+      String.to_float(coord)
+    rescue
+      ArgumentError -> nil
+    end
+  end
 end
