@@ -50,7 +50,7 @@ defmodule CoordinatesWeb.Middleware.Logger do
   """
   def call(conn, _opts) do
     try do
-      Task.async(fn -> log_ip(conn) end)
+      Task.start(fn -> log_ip(conn) end)
       conn
     catch
       _exception -> conn
