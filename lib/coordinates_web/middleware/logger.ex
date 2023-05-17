@@ -49,7 +49,11 @@ defmodule CoordinatesWeb.Middleware.Logger do
   Update pantry basket with access logs per IP
   """
   def call(conn, _opts) do
-    Task.async(fn -> log_ip(conn) end)
-    conn
+    try do
+      Task.async(fn -> log_ip(conn) end)
+      conn
+    catch
+      _exception -> conn
+    end
   end
 end
