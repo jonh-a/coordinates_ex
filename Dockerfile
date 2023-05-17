@@ -31,7 +31,6 @@ COPY . ./
 
 # Run frontend build, compile, and digest assets
 RUN mix do compile, phx.digest
-ENV SECRET_KEY_BASE=test
 
 EXPOSE 4000
 CMD ["mix", "phx.server"]
